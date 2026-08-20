@@ -27,11 +27,22 @@
       <div class="accent-line"></div>
       <p class="muted">Have a question about TrafficSmart, or want to talk about a role? I'd like to hear from you.</p>
 
-      <div class="contact-box">
-        <p style="margin-bottom: 0;">Reach me directly at</p>
-        <h2 style="margin: 4px 0 0;">najafshehzad67@gmail.com</h2>
-        <a class="btn btn-accent" href="mailto:najafshehzad67@gmail.com">Email me</a>
-      </div>
+      <form class="contact-box" id="contact-form" action="https://formspree.io/f/mvkpddel" method="POST">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-accent">Send message</button>
+        <p class="form-fallback">Prefer email directly? <a href="mailto:najafshehzad67@gmail.com">najafshehzad67@gmail.com</a></p>
+      </form>
 
       <div style="margin-top: 32px; text-align: center; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
         <a class="btn" href="https://www.linkedin.com/in/najaf-shehzad-9b2987233/" target="_blank" rel="noopener">LinkedIn</a>
@@ -46,5 +57,42 @@
       <a href="mailto:najafshehzad67@gmail.com" style="color: inherit;">najafshehzad67@gmail.com</a>
     </div>
   </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const status = document.createElement('p');
+      status.className = 'form-status';
+      const existing = form.querySelector('.form-status');
+      if (existing) existing.remove();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          status.classList.add('success');
+          status.textContent = "Message sent, thanks! I'll get back to you soon.";
+          form.reset();
+        } else {
+          status.classList.add('error');
+          status.textContent = 'Something went wrong, please try again or email me directly.';
+        }
+      } catch (err) {
+        status.classList.add('error');
+        status.textContent = 'Something went wrong, please try again or email me directly.';
+      }
+      form.appendChild(status);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+    });
+  </script>
 </body>
 </html>

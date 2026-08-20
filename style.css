@@ -174,12 +174,53 @@ p { margin-bottom: 16px; }
 /* Contact */
 .contact-box {
   text-align: center;
-  padding: 48px 24px;
+  padding: 40px 24px;
   background: #F2F1EC;
   border-radius: 12px;
   margin-top: 24px;
 }
-.contact-box .btn { margin-top: 20px; font-size: 1.05rem; padding: 14px 32px; }
+.contact-box .btn { margin-top: 8px; font-size: 1.05rem; padding: 14px 32px; width: 100%; }
+.form-field {
+  text-align: left;
+  margin-bottom: 16px;
+}
+.form-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  background: #FFFFFF;
+  border: 1.5px solid #D9D8D3;
+  border-radius: 8px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.form-fallback {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.form-fallback a { color: var(--accent); }
+.form-status {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.form-status.success { color: #2E7D5C; }
+.form-status.error { color: #B3453D; }
 
 /* Footer */
 footer {
