@@ -231,5 +231,32 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.badges {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.credential-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--main);
+  background: #EEF3F7;
+  border: 1px solid #D7E1E9;
+  border-radius: 20px;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+.credential-badge:hover {
+  background: var(--main);
+  color: #FAFAFA;
+  border-color: var(--main);
+}
+.credential-badge svg { flex-shrink: 0; }
 
 main { padding: 40px 0 20px; }
